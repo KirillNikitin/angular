@@ -1,0 +1,67 @@
+<div ng-controller="tableCtrl">
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<td colspan='4'>Filter name: <input type="text" ng-model="search.done"></td>
+			<td colspan='4'>Filter responsible: <input type="text" ng-model="search.responsible"></td>
+		</tr>
+		<tr>
+			<td colspan='8'>
+				<label for="repeatSelect"> Items per-page: </label>
+				<select name="repeatSelect" ng-model="data.repeatSelect" ng-change="data.change()">
+					<option ng-repeat="option in data.availableOptions" value="{{option.limit}}">{{option.option}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<a href="" ng-click="order('action')">Description</a>
+				<span class="sortorder" ng-show="predicate === 'action'" ng-class="{reverse:reverse}"></span>
+			</th>
+			<th>
+				<a href="" ng-click="order('name')">Name</a>
+				<span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+			</th>
+			<th>Checkbox</th>
+			<th>
+				<a href="" ng-click="order('deadline')">Deadline</a>
+				<span class="sortorder" ng-show="predicate === 'deadline'" ng-class="{reverse:reverse}"></span>
+			</th>
+			<th>
+				<a href="" ng-click="order('responsible')">Responsible</a>
+				<span class="sortorder" ng-show="predicate === 'responsible'" ng-class="{reverse:reverse}"></span>
+			</th>
+			<th>
+				<a href="" ng-click="order('estimationHours')">Est. Hours</a>
+				<span class="sortorder" ng-show="predicate === 'estimationHours'" ng-class="{reverse:reverse}"></span>
+			</th>
+			<th>
+				<a href="" ng-click="order('notes')">Notes</a>
+				<span class="sortorder" ng-show="predicate === 'notes'" ng-class="{reverse:reverse}"></span>
+			</th>
+			<th>
+				<a href="" ng-click="order('count')">Rating</a>
+				<span class="sortorder" ng-show="predicate === 'count'" ng-class="{reverse:reverse}"></span>
+				<!-- <span>rating</span> -->
+				<!-- <span class="sortorder" ng-show="predicate === 'notes'" ng-class="{reverse:reverse}"></span> -->
+			</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr ng-repeat="item in todo.items | checkedItems: showComplete | filter:search | orderBy:predicate:reverse | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+			<td>{{item.action}}</td>
+			<td>{{item.done}}</td>
+			<td><input type="checkbox" ng-model="item.done"></td>
+			<td>{{item.deadline | date : fullDate}}</td>
+			<td>{{item.responsible | uppercase}}</td>
+			<td>{{item.estimationHours | number}}</td>
+			<td>{{item.notes}}</td>
+			<td><my-rating rcount="{{item.count}}"></my-rating></td>
+			<td><button ng-click="removeItem(item)" type="button" class="btn btn-danger btn-xs">Delete</button></td>			
+		</tr>
+	</tbody>
+</table>
+<pagination page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit"></pagination>
+</div>

@@ -1,0 +1,30 @@
+<div class="panel" ng-controller="formCtrl">
+			<div class="input-group">
+				<div class="row">
+					<div class="col-xs-2">
+						<label>Action</label>
+						<input type="text" class="form-control" ng-model="newItem.action" />
+					</div>
+					<div class="col-xs-2">
+						<label>Deadline</label>
+						<input type="date" class="form-control" ng-model="newItem.deadline" />
+					</div>
+					<div class="col-xs-2">
+						<label>Responsible</label>
+						<input type="text" class="form-control" ng-model="newItem.responsible" />
+					</div>
+					<div class="col-xs-2">
+						<label>Estimated hours</label>
+						<input type="number" class="form-control" ng-model="newItem.estimationHours" />
+					</div>
+					<div class="col-xs-3">
+						<label>Notes</label>
+						<input type="text" class="form-control" ng-model="newItem.notes" />
+					</div>	
+					<span class="input-group-btn" style="padding-top: 24px;">
+						<button class="btn btn-default"
+							ng-disabled="!newItem || !newItem.action || !newItem.responsible || !newItem.estimationHours || !newItem.notes"
+							ng-click="addNewItem(todo.items, newItem)">Add</button>
+					</span>
+				</div>
+			</div>
