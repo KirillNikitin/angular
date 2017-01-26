@@ -16,7 +16,7 @@
 					responsible: newItem.responsible,
 					estimationHours: newItem.estimationHours,
 					notes: newItem.notes,
-					count: newItem.count
+					count: Math.random() * 1000
 				});
 				newItem.action = "";
 				newItem.deadline = "",
