@@ -15,13 +15,15 @@
 					deadline: newItem.deadline,
 					responsible: newItem.responsible,
 					estimationHours: newItem.estimationHours,
-					notes: newItem.notes
+					notes: newItem.notes,
+					count: newItem.count
 				});
 				newItem.action = "";
 				newItem.deadline = "",
 				newItem.responsible = "",
 				newItem.estimationHours = "",
-				newItem.notes = ""
+				newItem.notes = "",
+				newItem.count = ""	
 			}
 		}
 		
