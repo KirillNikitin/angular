@@ -23,6 +23,7 @@
 					</div>	
 					<span class="input-group-btn" style="padding-top: 24px;">
 						<button class="btn btn-default"
+							ng-model="newItem.count"
 							ng-disabled="!newItem || !newItem.action || !newItem.responsible || !newItem.estimationHours || !newItem.notes"
 							ng-click="addNewItem(todo.items, newItem)">Add</button>
 					</span>
